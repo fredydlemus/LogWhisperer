@@ -1,8 +1,13 @@
+import boto3
 import json
+
+client_sme = boto3.client('bedrock-runtime')
  
  
 def lambda_handler(event, context):
-    print("Event received:", json.dumps(event))
+    user_input = event['prompt']
+    print(event)
+    print(user_input)
  
     return {
         "statusCode": 200,
