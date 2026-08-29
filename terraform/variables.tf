@@ -9,3 +9,9 @@ variable "function_name" {
   type        = string
   default     = "equipment-sme-assistant"
 }
+
+variable "model_id" {
+  description = "The model id of Amazon Bedrock"
+  type = string
+  default = "amazon.nova-pro-v1:0"
+}

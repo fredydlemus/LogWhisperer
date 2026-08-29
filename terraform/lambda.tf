@@ -56,4 +56,10 @@ resource "aws_lambda_function" "function" {
   source_code_hash = data.archive_file.lambda_zip.output_base64sha256
   timeout          = 120
   memory_size      = 128
+
+  environment {
+    variables = {
+      "MODEL_ID": var.model_id
+    }
+  }
 }
