@@ -14,3 +14,11 @@ output "api_endpoint" {
 output "rest_api_id" {
   value = aws_api_gateway_rest_api.this.id
 }
+
+output "bedrock_log_group_name" {
+  value = aws_cloudwatch_log_group.bedrock_logs.name
+}
+
+output "bedrock_log_group_arn" {
+  value = aws_cloudwatch_log_group.bedrock_logs.arn
+}
