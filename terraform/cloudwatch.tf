@@ -64,3 +64,25 @@ resource "aws_bedrock_model_invocation_logging_configuration" "this" {
 
   depends_on = [ aws_iam_role_policy.bedrock_logging_policy ]
 }
+
+resource "aws_cloudwatch_metric_alarm" "bedrock_client_errors" {
+  alarm_name = "InvocationClientErrors"
+  alarm_description = "Bedrock returned 5+ client errors in a 5-minute window"
+
+  namespace = "AWS/Bedrock"
+  metric_name = "InvocationClientErrors"
+  statistic = "Sum"
+  period = 300
+
+  comparison_operator = "GreaterThanOrEqualToThreshold"
+  threshold = 5
+  evaluation_periods = 1
+
+  treat_missing_data = "notBreaching"
+
+  alarm_actions = [aws_sns_topic.bedrock_alarms.arn]
+
+  dimensions = {
+    modelId = var.model_id
+  }
+}

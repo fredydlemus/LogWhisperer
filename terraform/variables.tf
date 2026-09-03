@@ -15,3 +15,9 @@ variable "model_id" {
   type = string
   default = "amazon.nova-pro-v1:0"
 }
+
+variable "email_address" {
+  description = "Email address to send alarms to"
+  type = string
+  default = "fredyflemus@gmail.com"
+}
