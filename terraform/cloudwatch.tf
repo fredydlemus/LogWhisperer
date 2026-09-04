@@ -83,6 +83,6 @@ resource "aws_cloudwatch_metric_alarm" "bedrock_client_errors" {
   alarm_actions = [aws_sns_topic.bedrock_alarms.arn]
 
   dimensions = {
-    modelId = var.model_id
+    ModelId = var.model_id
   }
 }
