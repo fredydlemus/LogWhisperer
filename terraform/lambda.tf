@@ -59,7 +59,7 @@ resource "aws_lambda_function" "function" {
 
   environment {
     variables = {
-      "MODEL_ID": var.model_id
+      "MODEL_ID" : var.model_id
     }
   }
 }
