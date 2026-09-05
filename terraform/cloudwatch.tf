@@ -23,7 +23,7 @@ resource "aws_iam_role" "bedrock_logging_role" {
                     "aws:SourceAccount" = data.aws_caller_identity.current.account_id
                 }
                 ArnLike = {
-                    "aws:SourceArn" = "arn:aws:bedrock:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:*"
+                    "aws:SourceArn" = "arn:aws:bedrock:${data.aws_region.current.region}:${data.aws_caller_identity.current.account_id}:*"
                 }
             }
         }
