@@ -64,3 +64,10 @@ resource "aws_bedrock_guardrail" "this" {
     }
   }
 }
+
+resource "aws_bedrock_guardrail_version" "version" {
+  guardrail_arn = aws_bedrock_guardrail.this.guardrail_arn
+  description = "Version 1 of the log_whisperer_guardrail"
+
+  skip_destroy = true
+}
