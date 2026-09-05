@@ -22,3 +22,15 @@ output "bedrock_log_group_name" {
 output "bedrock_log_group_arn" {
   value = aws_cloudwatch_log_group.bedrock_logs.arn
 }
+
+output "guardrail_id" {
+  value = aws_bedrock_guardrail.this.guardrail_id
+}
+
+output "guardrail_arn" {
+  value = aws_bedrock_guardrail.this.guardrail_arn
+}
+
+output "guardrail_version_id" {
+  value = aws_bedrock_guardrail_version.version.version
+}
