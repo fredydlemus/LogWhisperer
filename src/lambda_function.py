@@ -3,6 +3,8 @@ import json
 import os
 
 MODEL_ID = os.getenv("MODEL_ID")
+GUARDRAIL_ID = os.getenv("GUARDRAIL_ID")
+GUARDRAIL_VERSION = os.getenv("GUARDRAIL_VERSION")
 
 bedrock_client = boto3.client('bedrock-runtime')
  
@@ -37,6 +39,8 @@ def lambda_handler(event, context):
         accept='application/json',
         modelId=MODEL_ID,
         trace='ENABLED',
+        guardrailIdentifier=GUARDRAIL_ID,
+        guardrailVersion=GUARDRAIL_VERSION,
         performanceConfigLatency='standard'
     )
 

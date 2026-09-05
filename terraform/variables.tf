@@ -21,3 +21,13 @@ variable "email_address" {
   type        = string
   default     = "fredyflemus@gmail.com"
 }
+
+variable "guardrail_id" {
+  description = "Guardrail identifier"
+  type        = string
+}
+
+variable "guardrail_version" {
+  description = "Guardrail version"
+  type        = string
+}

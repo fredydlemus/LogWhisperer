@@ -38,7 +38,8 @@ resource "aws_iam_role_policy" "bedrock_invoke" {
         Effect = "Allow"
         Action = [
           "bedrock:InvokeModel",
-          "bedrock:InvokeModelWithResponseStream"
+          "bedrock:InvokeModelWithResponseStream",
+          "bedrock:ApplyGuardrail"
         ]
         Resource = "*"
       }
@@ -60,6 +61,8 @@ resource "aws_lambda_function" "function" {
   environment {
     variables = {
       "MODEL_ID" : var.model_id
+      "GUARDRAIL_ID" : var.guardrail_id
+      "GUARDRAIL_VERSION" : var.guardrail_version
     }
   }
 }
