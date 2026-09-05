@@ -4,7 +4,7 @@ import os
 
 MODEL_ID = os.getenv("MODEL_ID")
 
-client_sme = boto3.client('bedrock-runtime')
+bedrock_client = boto3.client('bedrock-runtime')
  
  
 def lambda_handler(event, context):
@@ -13,7 +13,13 @@ def lambda_handler(event, context):
     message_prompt = [{"role": "user", "content": [{"text": user_input}]}]
 
     system_prompt = [{
-        "text": "Act as wind turbine manufactoring assistant. Summarize the logs in 5 lines."
+        "text": """Act as an intelligent log analysis assistant. Your task is to analyze application logs and provide a structured 5-line summary that includes:
+        1. Critical errors or failures (if any)
+2. Key events or state changes
+3. Performance metrics or anomalies
+4. User/system actions of importance
+5. Overall system status and recommendations
+        """
     }]
 
     inference_params = {"maxTokens": 2500, "topP": 0.9, "topK": 20, "temperature": 0.7}
@@ -25,7 +31,7 @@ def lambda_handler(event, context):
         "inferenceConfig": inference_params
     }
 
-    response = client_sme.invoke_model(
+    response = bedrock_client.invoke_model(
         body=json.dumps(request_body),
         contentType='application/json',
         accept='application/json',

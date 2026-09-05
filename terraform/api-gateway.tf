@@ -10,7 +10,7 @@ resource "aws_api_gateway_rest_api" "this" {
 resource "aws_api_gateway_resource" "resource" {
   rest_api_id = aws_api_gateway_rest_api.this.id
   parent_id = aws_api_gateway_rest_api.this.root_resource_id
-  path_part = "sme_assistant"
+  path_part = "assistant"
 }
 
 resource "aws_api_gateway_method" "method" {
@@ -84,5 +84,5 @@ resource "aws_lambda_permission" "apigw" {
   action = "lambda:InvokeFunction"
   function_name = aws_lambda_function.function.function_name
   principal = "apigateway.amazonaws.com"
-  source_arn = "${aws_api_gateway_rest_api.this.execution_arn}/*/${aws_api_gateway_method.method.http_method}/sme_assistant"
+  source_arn = "${aws_api_gateway_rest_api.this.execution_arn}/*/${aws_api_gateway_method.method.http_method}/assistant"
 }

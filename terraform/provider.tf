@@ -17,7 +17,7 @@ provider "aws" {
 
   default_tags {
     tags = {
-      Project = "equipment-sme-assistant"
+      Project = "log-whisperer"
     }
   }
 }

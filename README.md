@@ -1,1 +1,1 @@
-### Equipment SME Assistant
+### Log Whisperer

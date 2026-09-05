@@ -1,5 +1,5 @@
 resource "aws_sns_topic" "bedrock_alarms" {
-  name = "equipment_sme_assistant"
+  name = "log-whisperer"
 }
 
 resource "aws_sns_topic_subscription" "email" {

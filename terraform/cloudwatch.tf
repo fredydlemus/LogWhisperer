@@ -2,12 +2,12 @@ data "aws_caller_identity" "current" {}
 data "aws_region" "current" {}
 
 resource "aws_cloudwatch_log_group" "bedrock_logs" {
-  name = "/aws/bedrock/equipment-sme-assistant-logs"
+  name = "/aws/bedrock/log-whisperer-logs"
   retention_in_days = 14
 }
 
 resource "aws_iam_role" "bedrock_logging_role" {
-  name = "equipment-sme-assistant"
+  name = "log-whisperer"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
